@@ -1,52 +1,17 @@
 #!/bin/bash
 ##
 ## Debian VPN Server Installer Script
-## by JohnFordTV
+## by Lorenz Ebrado
 ##
 ## Copyright (c) Debian VPN 2019. All Rights Reserved
 ##
 
-
-## Check if VPS have root access
-if [[ "$EUID" -ne 0 ]]; then
-	echo "Sorry, you need to run this as root"
-	exit
-fi
-
-## Check if TUN Device is available
-if [[ ! -e /dev/net/tun ]]; then
-	echo "The TUN device is not available
-You need to enable TUN before running this script"
-	exit
-fi
-
-## Check if VPS have Debian OS
-if [[ -e /etc/debian_version ]]; then
-	OS=debian
-	GROUPNAME=nogroup
-	RCLOCAL='/etc/rc.local'
-else
-	echo "Looks like you aren't running this installer on Debian, Ubuntu or CentOS"
-	exit
-fi
-
-## GET REAL IP
-if [[ "$PUBLICIP" != "" ]]; then
-	IP=$PUBLICIP
-fi
-
-wget -O - https://swupdate.openvpn.net/repos/repo-public.gpg|apt-key add -
-sleep 2
-echo "deb http://build.openvpn.net/debian/openvpn/release/2.4 stretch main" > /etc/apt/sources.list.d/openvpn-aptrepo.list
-
-##
 ## Prepare System
 ##
 # Disable ipv6
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 # Set Local Time
 ln -fs /usr/share/zoneinfo/Asia/Manila /etc/localtime
-
 
 ##
 ## Update and Upgrade System
