@@ -63,16 +63,16 @@ unzip openvpn.zip
 rm openvpn.zip
 
 ## Download User Count Script
-cd ~
-wget https://raw.githubusercontent.com/johndesu090/OVPNAUTH/master/users.sh
-crontab -l > mycron
-echo "* * * * * ~/users.sh" >> mycron
-crontab mycron
-rm mycron
+##cd ~
+##wget https://raw.githubusercontent.com/johndesu090/OVPNAUTH/master/users.sh
+##crontab -l > mycron
+##echo "* * * * * ~/users.sh" >> mycron
+##crontab mycron
+##rm mycron
 
 ## Setting Permission
-chmod +x ~/users.sh
-chmod +x /etc/openvpn/login.sh
+##chmod +x ~/users.sh
+##chmod +x /etc/openvpn/login.sh
 
 ## Start Debian VPN
 service openvpn restart
