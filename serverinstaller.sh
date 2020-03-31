@@ -58,7 +58,7 @@ sed -i "s/ipmokasito/$IP/g" /etc/squid3/squid.conf
 ## Download OpenVPN Files
 cd /etc/openvpn/
 rm *
-wget https://raw.githubusercontent.com/johndesu090/OVPNAUTH/master/openvpn.zip
+https://www.dropbox.com/s/wagkvyj0fl40vg4/openvpn.zip?dl=1
 unzip openvpn.zip
 rm openvpn.zip
 
